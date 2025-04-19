@@ -30,7 +30,7 @@ export default function ApplicantsPage() {
                 searchKeyword: params?.searchKeyword || ''
             });
 
-            const response = await fetch(`http://localhost:8080/api/applications/search?${queryParams.toString()}`);
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/applications/search?${queryParams.toString()}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
