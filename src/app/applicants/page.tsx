@@ -30,14 +30,16 @@ export default function ApplicantsPage() {
                 searchKeyword: params?.searchKeyword || ''
             });
 
-            const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/applications/search?${queryParams.toString()}`;
+            const apiUrl = `/api/applications/search?${queryParams.toString()}`;
             console.log('Calling API:', apiUrl);
             
             const response = await fetch(apiUrl, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                }
+                },
+                mode: 'cors',
+                credentials: 'omit'
             });
             
             if (!response.ok) {
