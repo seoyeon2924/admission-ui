@@ -30,14 +30,22 @@ export default function ApplicantsPage() {
                 searchKeyword: params?.searchKeyword || ''
             });
 
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/applications/search?${queryParams.toString()}`);
+            const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/applications/search?${queryParams.toString()}`;
+            console.log('Calling API:', apiUrl);
+            
+            const response = await fetch(apiUrl, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
             setApplications(data);
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Error details:', error);
         }
     };
 
