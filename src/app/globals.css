@@ -1,26 +1,46 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --primary: #FFB7C5;
+  --secondary: #FFE4E1;
+  --background: #FFF9F9;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+}
+
+.tab-active {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* 커스텀 체크박스 */
+.custom-checkbox {
+  @apply appearance-none w-5 h-5 border-2 border-primary rounded bg-white cursor-pointer relative;
+}
+
+.custom-checkbox:checked {
+  @apply bg-primary;
+}
+
+.custom-checkbox:checked::after {
+  content: "";
+  @apply absolute top-[0.2rem] left-[0.35rem] w-[0.4rem] h-[0.7rem] border-white border-r-2 border-b-2 rotate-45;
+}
+
+/* 커스텀 라디오 버튼 */
+.custom-radio {
+  @apply appearance-none w-5 h-5 border-2 border-primary rounded-full bg-white cursor-pointer relative;
+}
+
+.custom-radio:checked {
+  @apply border-primary;
+}
+
+.custom-radio:checked::after {
+  content: "";
+  @apply absolute top-1 left-1 w-2.5 h-2.5 rounded-full bg-primary;
 }
