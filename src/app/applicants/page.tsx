@@ -37,8 +37,7 @@ export default function ApplicantsPage() {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                },
-                mode: 'no-cors'  // CORS 정책 우회
+                }
             });
             
             if (!response.ok) {
