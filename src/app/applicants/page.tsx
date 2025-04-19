@@ -38,8 +38,11 @@ export default function ApplicantsPage() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                mode: 'no-cors'  // CORS 정책 우회
             });
+            
             if (!response.ok) {
+                console.error('Response not OK:', response.status, response.statusText);
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
